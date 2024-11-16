@@ -17,9 +17,8 @@
 #define EVENT_SUB(LEVEL) BCOS_LOG(LEVEL) << "[EVENT][SUB]"
 #define EVENT_MATCH(LEVEL) BCOS_LOG(LEVEL) << "[EVENT][MATCH]"
 
-namespace bcos
-{
-namespace event
+
+namespace bcos::event
 {
 enum EP_STATUS_CODE
 {
@@ -35,5 +34,5 @@ enum EP_STATUS_CODE
     NONEXISTENT_EVENT = -41007,
 };
 
-}  // namespace event
-}  // namespace bcos
+} // namespace bcos::event
+

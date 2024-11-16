@@ -52,7 +52,7 @@ int main(int argc, const char* argv[])
         abort();
     });
 
-    // Note: the initializer must exist in the life time of the whole program
+    // Note: the initializer must exist in the lifetime of the whole program
     auto initializer = std::make_shared<AirNodeInitializer>();
     try
     {
@@ -63,10 +63,10 @@ int main(int argc, const char* argv[])
             {
                 initializer->init(param.configFilePath, param.genesisFilePath);
                 std::cout << "[" << bcos::getCurrentDateTime() << "] ";
-                std::cout << "prune the node data..." << std::endl;
+                std::cout << "prune the node data..." << '\n';
                 initializer->nodeInitializer()->prune();
                 std::cout << "[" << bcos::getCurrentDateTime() << "] ";
-                std::cout << "prune the node data success." << std::endl;
+                std::cout << "prune the node data success." << '\n';
                 return 0;
             }
             auto logInitializer = std::make_shared<bcos::BoostLogInitializer>();
@@ -82,18 +82,18 @@ int main(int argc, const char* argv[])
             {
                 bool withTxAndReceipt = param.hasOp(bcos::initializer::Params::operation::Snapshot);
                 std::cout << "[" << bcos::getCurrentDateTime() << "] ";
-                std::cout << "generating snapshot to " << param.snapshotPath << " ..." << std::endl;
+                std::cout << "generating snapshot to " << param.snapshotPath << " ..." << '\n';
                 auto error = nodeInitializer->generateSnapshot(
                     param.snapshotPath, withTxAndReceipt, nodeConfig);
                 if (error)
                 {
                     std::cout << "[" << bcos::getCurrentDateTime() << "] ";
                     std::cout << "generate snapshot failed, error:" << error->errorMessage()
-                              << std::endl;
+                              << '\n';
                     return -1;
                 }
                 std::cout << "[" << bcos::getCurrentDateTime() << "] ";
-                std::cout << "generate snapshot success." << std::endl;
+                std::cout << "generate snapshot success." << '\n';
                 return 0;
             }
             if (param.hasOp(bcos::initializer::Params::operation::ImportSnapshot))
@@ -101,17 +101,17 @@ int main(int argc, const char* argv[])
                 // initializer->init(param.configFilePath, param.genesisFilePath);
                 std::cout << "[" << bcos::getCurrentDateTime() << "] ";
                 std::cout << "importing snapshot from " << param.snapshotPath << " ..."
-                          << std::endl;
+                          << '\n';
                 auto error = nodeInitializer->importSnapshot(param.snapshotPath, nodeConfig);
                 if (error)
                 {
                     std::cout << "[" << bcos::getCurrentDateTime() << "] ";
                     std::cout << "import snapshot failed, error:" << error->errorMessage()
-                              << std::endl;
+                              << '\n';
                     return -1;
                 }
                 std::cout << "[" << bcos::getCurrentDateTime() << "] ";
-                std::cout << "import snapshot success." << std::endl;
+                std::cout << "import snapshot success." << '\n';
             }
             return 0;
         }
@@ -120,7 +120,7 @@ int main(int argc, const char* argv[])
 
         bcos::initializer::printVersion();
         std::cout << "[" << bcos::getCurrentDateTime() << "] ";
-        std::cout << "The fisco-bcos is running..." << std::endl;
+        std::cout << "The fisco-bcos is running..." << '\n';
         initializer->start();
     }
     catch (std::exception const& e)
@@ -128,7 +128,7 @@ int main(int argc, const char* argv[])
         bcos::initializer::printVersion();
         std::cout << "[" << bcos::getCurrentDateTime() << "] ";
         std::cout << "start fisco-bcos failed, error:" << boost::diagnostic_information(e)
-                  << std::endl;
+                  << '\n';
         return -1;
     }
 
@@ -141,5 +141,5 @@ int main(int argc, const char* argv[])
 
     initializer.reset();
     std::cout << "[" << bcos::getCurrentDateTime() << "] ";
-    std::cout << "fisco-bcos program exit normally." << std::endl;
+    std::cout << "fisco-bcos program exit normally." << '\n';
 }

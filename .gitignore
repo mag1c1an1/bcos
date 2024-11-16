@@ -71,3 +71,7 @@ tools/BcosAirBuilder/*
 
 test/*
 /CMakeSettings.json
+
+cmake-build-debug*
+cmake-build-release*
+

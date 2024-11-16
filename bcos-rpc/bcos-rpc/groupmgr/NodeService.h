@@ -93,13 +93,13 @@ public:
         bcos::group::ChainNodeInfo::Ptr _nodeInfo, bcos::tool::NodeConfig::Ptr _nodeConfig);
 
     template <typename T, typename S, typename... Args>
-    inline std::pair<std::shared_ptr<T>, S> createServicePrx(bcos::protocol::ServiceType _type,
+    std::pair<std::shared_ptr<T>, S> createServicePrx(bcos::protocol::ServiceType _type,
         bcos::group::ChainNodeInfo::Ptr _nodeInfo, bcos::tool::NodeConfig::Ptr _nodeConfig,
         const Args&... _args)
     {
         auto withoutTarsFramework = _nodeConfig->withoutTarsFramework();
         auto serviceName = _nodeInfo->serviceName(_type);
-        if (serviceName.size() == 0)
+        if (serviceName.empty())
         {
             return std::make_pair(nullptr, nullptr);
         }

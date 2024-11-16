@@ -30,9 +30,8 @@
 #include <bcos-tars-protocol/protocol/BlockHeaderFactoryImpl.h>
 #include <bcos-tars-protocol/protocol/TransactionFactoryImpl.h>
 #include <bcos-tars-protocol/protocol/TransactionReceiptFactoryImpl.h>
-namespace bcos
-{
-namespace rpc
+
+namespace bcos::rpc
 {
 inline bcos::crypto::CryptoSuite::Ptr createCryptoSuite()
 {
@@ -62,5 +61,4 @@ inline bcos::protocol::BlockFactory::Ptr createBlockFactory(
     return std::make_shared<bcostars::protocol::BlockFactoryImpl>(
         _cryptoSuite, blockHeaderFactory, transactionFactory, receiptFactory);
 }
-}  // namespace rpc
-}  // namespace bcos
+} // namespace bcos::rpc
